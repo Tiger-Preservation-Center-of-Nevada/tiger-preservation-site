@@ -77,10 +77,14 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+/* fallback for pre-2022 mobile browsers without dvh (kept out of the body
+   rule because the CSS minifier collapses same-property fallback pairs) */
+@supports not (min-height: 100dvh) {
+  body { min-height: 100vh; }
 }
 main { flex: 1 0 auto; }
 [tabindex="-1"] { outline: none; }
