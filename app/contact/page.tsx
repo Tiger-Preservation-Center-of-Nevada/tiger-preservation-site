@@ -24,8 +24,8 @@ export default function ContactPage() {
             </div>
             <div className="contact-card reveal">
               <p className="label">Email</p>
-              <a className="email" href="mailto:animalrescue4life@gmail.com">
-                animalrescue4life@gmail.com
+              <a className="email" href="mailto:info@tigerpreservationcenter.org">
+                info@tigerpreservationcenter.org
               </a>
             </div>
             <div className="contact-card reveal">

@@ -37,8 +37,8 @@ export default function DonatePage() {
               (EIN 83-0883398). Donations are tax-deductible to the extent
               allowed by law. Prefer to give directly? Call{" "}
               <a href="tel:+15412512287">(541) 251-2287</a> or email{" "}
-              <a href="mailto:animalrescue4life@gmail.com">
-                animalrescue4life@gmail.com
+              <a href="mailto:info@tigerpreservationcenter.org">
+                info@tigerpreservationcenter.org
               </a>
               .
             </p>

@@ -17,8 +17,8 @@ export default function SiteFooter() {
         <div className="footer-col">
           <p className="col-head">Contact</p>
           <a href="tel:+15412512287">(541) 251-2287</a>
-          <a className="email" href="mailto:animalrescue4life@gmail.com">
-            animalrescue4life@gmail.com
+          <a className="email" href="mailto:info@tigerpreservationcenter.org">
+            info@tigerpreservationcenter.org
           </a>
           <p className="addr">92 McDaniel Way, Crescent Valley, NV</p>
         </div>

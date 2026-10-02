@@ -52,7 +52,7 @@ const jsonLd = {
   taxID: "83-0883398",
   url: "https://www.tigerpreservationcenter.org",
   telephone: "+1-541-251-2287",
-  email: "animalrescue4life@gmail.com",
+  email: "info@tigerpreservationcenter.org",
   address: {
     "@type": "PostalAddress",
     streetAddress: "92 McDaniel Way",

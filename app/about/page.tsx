@@ -116,8 +116,8 @@ export default function AboutPage() {
             belong to us, and the person reached at that number has no
             connection to this organization. Our only official contact details
             are <a href="tel:+15412512287">(541) 251-2287</a>,{" "}
-            <a href="mailto:animalrescue4life@gmail.com">
-              animalrescue4life@gmail.com
+            <a href="mailto:info@tigerpreservationcenter.org">
+              info@tigerpreservationcenter.org
             </a>
             , and 92 McDaniel Way, Crescent Valley, Nevada.
           </p>
