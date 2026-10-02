@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "The Animals",
+  description:
+    "Meet the rescued big cats who live at the Tiger Preservation Center of Nevada, including Shoka the white tiger. Every resident has a lifetime home at our sanctuary.",
+  alternates: { canonical: "/animals" },
 };
 
 export default function AnimalsPage() {

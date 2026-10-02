@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About",
+  description:
+    "The Tiger Preservation Center of Nevada is a 501(c)(3), federally licensed, non-breeding sanctuary in Crescent Valley, NV providing lifetime care to rescued tigers, lions, big cats, and timber wolves.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

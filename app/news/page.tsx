@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "News & Events",
+  description:
+    "News, updates, and upcoming events from the Tiger Preservation Center of Nevada — fundraisers and stories from our big cat rescue sanctuary.",
+  alternates: { canonical: "/news" },
 };
 
 export default function NewsPage() {

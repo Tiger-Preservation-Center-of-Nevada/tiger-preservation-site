@@ -27,10 +27,18 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.tigerpreservationcenter.org"),
   openGraph: {
     type: "website",
+    siteName: "The Tiger Preservation Center of Nevada",
     title: "The Tiger Preservation Center of Nevada",
     description:
       "A 501(c)(3) nonprofit, non-breeding rescue center giving lifetime homes to abused and neglected exotic animals.",
-    images: ["/assets/shoka.jpg"],
+    images: [
+      {
+        url: "/assets/shoka.jpg",
+        width: 609,
+        height: 332,
+        alt: "Shoka, a white tiger resting at the Tiger Preservation Center of Nevada",
+      },
+    ],
   },
   icons: {
     icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%85%3C/text%3E%3C/svg%3E",

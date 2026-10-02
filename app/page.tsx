@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description:
+    "The Tiger Preservation Center of Nevada is a 501(c)(3) non-breeding big cat rescue giving lifetime homes to abused and neglected tigers, lions, and timber wolves in Crescent Valley, Nevada.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -26,6 +33,7 @@ export default function Home() {
               src="/assets/shoka.jpg"
               alt="Shoka, a white tiger, resting in his enclosure at the center"
               loading="eager"
+              fetchPriority="high"
             />
           </div>
           <p className="media-caption">Shoka, one of the center&rsquo;s residents.</p>

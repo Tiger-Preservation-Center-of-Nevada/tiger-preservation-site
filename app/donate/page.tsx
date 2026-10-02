@@ -3,6 +3,9 @@ import DonateWidget from "@/components/DonateWidget";
 
 export const metadata: Metadata = {
   title: "Donate",
+  description:
+    "Support rescued tigers, lions, and timber wolves. Your tax-deductible gift to the Tiger Preservation Center of Nevada (501(c)(3), EIN 83-0883398) funds food, veterinary care, and enclosures.",
+  alternates: { canonical: "/donate" },
 };
 
 export default function DonatePage() {
