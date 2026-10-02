@@ -26,13 +26,12 @@ npm run build
 
 Pushes to `main` trigger the **Deploy to Vercel** GitHub Actions workflow
 (`.github/workflows/deploy.yml`), which hands the build off to Vercel.
-It requires three repository secrets:
+It requires the `VERCEL_TOKEN` repository secret
+([Vercel account settings → Tokens](https://vercel.com/account/tokens)).
 
-| Secret | Where to find it |
-| --- | --- |
-| `VERCEL_TOKEN` | [Vercel account settings → Tokens](https://vercel.com/account/tokens) |
-| `VERCEL_ORG_ID` | `.vercel/project.json` after running `vercel link` |
-| `VERCEL_PROJECT_ID` | `.vercel/project.json` after running `vercel link` |
+The optional `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` secrets pin the exact
+Vercel project; when absent, the workflow resolves (or creates) the project
+by its name, `tiger-preservation-site`.
 
 ## Pages
 

@@ -27,4 +27,9 @@ jobs:
             echo "::warning::VERCEL_TOKEN secret is not set — skipping deploy."
             exit 0
           fi
+          # Without org/project ID secrets, resolve (or create) the project by name.
+          if [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            unset VERCEL_ORG_ID VERCEL_PROJECT_ID
+            npx vercel@latest link --yes --project tiger-preservation-site --token "$VERCEL_TOKEN"
+          fi
           npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
