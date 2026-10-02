@@ -292,7 +292,8 @@ p { margin: 0; }
 .callout a { font-weight: 700; }
 
 /* ---------- animals ---------- */
-.animal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+/* auto-fill (not auto-fit) so a lone card keeps card size instead of stretching full-width */
+.animal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
 .animal-media { width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; }
 .animal-media img { width: 100%; height: 100%; object-fit: cover; }
 .animal-card h2 { margin: 16px 0 6px; font-size: 24px; }

@@ -27,56 +27,6 @@ export default function AnimalsPage() {
             <h2>Shoka</h2>
             <p>White tiger &mdash; a permanent resident of the center.</p>
           </div>
-          <div className="animal-card reveal">
-            <div className="animal-media">
-              <img
-                src="/assets/lion.jpg"
-                alt="Close-up of one of the center's rescued lions"
-                loading="lazy"
-              />
-            </div>
-            <h2>One of the lions</h2>
-            <p>
-              One of the center&rsquo;s rescued lions &mdash; name and story
-              coming soon.
-            </p>
-          </div>
-          <div className="animal-card reveal">
-            <div className="animal-media">
-              <div className="ph-tile">
-                <span>Photo coming soon</span>
-              </div>
-            </div>
-            <h2>Resident name</h2>
-            <p>Photo and story coming soon.</p>
-          </div>
-          <div className="animal-card reveal">
-            <div className="animal-media">
-              <div className="ph-tile">
-                <span>Photo coming soon</span>
-              </div>
-            </div>
-            <h2>Resident name</h2>
-            <p>Photo and story coming soon.</p>
-          </div>
-          <div className="animal-card reveal">
-            <div className="animal-media">
-              <div className="ph-tile">
-                <span>Photo coming soon</span>
-              </div>
-            </div>
-            <h2>Resident name</h2>
-            <p>Photo and story coming soon.</p>
-          </div>
-          <div className="animal-card reveal">
-            <div className="animal-media">
-              <div className="ph-tile">
-                <span>Photo coming soon</span>
-              </div>
-            </div>
-            <h2>Resident name</h2>
-            <p>Photo and story coming soon.</p>
-          </div>
         </div>
         <div className="sponsor-band reveal">
           <p>
