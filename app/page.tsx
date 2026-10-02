@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: {
+    absolute:
+      "The Tiger Preservation Center of Nevada — Big Cat Rescue & Sanctuary",
+  },
   description:
-    "The Tiger Preservation Center of Nevada is a 501(c)(3) non-breeding big cat rescue giving lifetime homes to abused and neglected tigers, lions, and timber wolves in Crescent Valley, Nevada.",
+    "The Tiger Preservation Center of Nevada is a 501(c)(3) non-breeding rescue giving lifetime homes to abused and neglected tigers, lions, and timber wolves.",
   alternates: { canonical: "/" },
 };
 
@@ -11,12 +15,13 @@ export default function Home() {
   return (
     <div id="page-home">
       <section className="wrap hero">
-        <div className="reveal">
+        <div>
           <h1>They were abused and abandoned. Here, they are home.</h1>
           <p className="lede">
-            The Tiger Preservation Center of Nevada is a non-breeding rescue
-            center that gives lifetime homes to abused and neglected exotic
-            animals &mdash; tigers, lions, big cats, and timber wolves.
+            The Tiger Preservation Center of Nevada is a non-breeding big cat
+            sanctuary and rescue center that gives lifetime homes to abused and
+            neglected exotic animals &mdash; tigers, lions, big cats, and
+            timber wolves.
           </p>
           <div className="hero-actions">
             <Link href="/donate" className="btn btn-primary">
@@ -27,7 +32,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="reveal">
+        <div>
           <div className="hero-media">
             <img
               src="/assets/shoka.jpg"

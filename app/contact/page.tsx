@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { ogFor } from "@/lib/og";
+
+const description =
+  "Contact the Tiger Preservation Center of Nevada: (541) 251-2287, info@tigerpreservationcenter.org, or 92 McDaniel Way, Crescent Valley, NV.";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Contact the Tiger Preservation Center of Nevada: (541) 251-2287, info@tigerpreservationcenter.org, or 92 McDaniel Way, Crescent Valley, NV.",
+  description,
   alternates: { canonical: "/contact" },
+  openGraph: ogFor("Contact", description, "/contact"),
 };
 
 export default function ContactPage() {

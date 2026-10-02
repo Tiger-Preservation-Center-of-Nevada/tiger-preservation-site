@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { ogFor } from "@/lib/og";
+
+const description =
+  "A 501(c)(3), federally licensed, non-breeding sanctuary in Crescent Valley, NV providing lifetime care to rescued tigers, lions, big cats, and timber wolves.";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "The Tiger Preservation Center of Nevada is a 501(c)(3), federally licensed, non-breeding sanctuary in Crescent Valley, NV providing lifetime care to rescued tigers, lions, big cats, and timber wolves.",
+  description,
   alternates: { canonical: "/about" },
+  openGraph: ogFor("About", description, "/about"),
 };
 
 export default function AboutPage() {

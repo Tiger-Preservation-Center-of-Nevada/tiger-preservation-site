@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Newsreader, Karla } from "next/font/google";
 import "./globals.css";
@@ -41,18 +41,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-  icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%85%3C/text%3E%3C/svg%3E",
-  },
-};
-
-export const viewport: Viewport = {
-  viewportFit: "cover",
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
+  "@id": "https://www.tigerpreservationcenter.org/#org",
   name: "The Tiger Preservation Center of Nevada",
   alternateName: "TPC-N",
   description:
@@ -60,8 +54,14 @@ const jsonLd = {
   nonprofitStatus: "https://schema.org/Nonprofit501c3",
   taxID: "83-0883398",
   url: "https://www.tigerpreservationcenter.org",
+  image: "https://www.tigerpreservationcenter.org/assets/shoka.jpg",
   telephone: "+1-541-251-2287",
   email: "info@tigerpreservationcenter.org",
+  potentialAction: {
+    "@type": "DonateAction",
+    name: "Donate to The Tiger Preservation Center of Nevada",
+    target: "https://www.tigerpreservationcenter.org/donate",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "92 McDaniel Way",
@@ -72,13 +72,34 @@ const jsonLd = {
   },
 };
 
+const webSiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://www.tigerpreservationcenter.org",
+  name: "The Tiger Preservation Center of Nevada",
+  alternateName: "TPC-N",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${karla.variable}`}>
+    <html
+      lang="en"
+      className={`${newsreader.variable} ${karla.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        {/* gate the scroll-reveal hidden state on JS actually running, so
+            content is never invisible to crawlers or no-JS visitors */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([jsonLd, webSiteLd]),
+          }}
         />
         <a className="skip-link" href="#main">
           Skip to content

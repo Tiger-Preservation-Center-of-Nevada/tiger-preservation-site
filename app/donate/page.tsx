@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import DonateWidget from "@/components/DonateWidget";
+import { ogFor } from "@/lib/og";
+
+const description =
+  "Your tax-deductible gift to the Tiger Preservation Center of Nevada funds food, veterinary care, and enclosures for rescued tigers, lions, and timber wolves.";
 
 export const metadata: Metadata = {
   title: "Donate",
-  description:
-    "Support rescued tigers, lions, and timber wolves. Your tax-deductible gift to the Tiger Preservation Center of Nevada (501(c)(3), EIN 83-0883398) funds food, veterinary care, and enclosures.",
+  description,
   alternates: { canonical: "/donate" },
+  openGraph: ogFor("Donate", description, "/donate"),
 };
 
 export default function DonatePage() {

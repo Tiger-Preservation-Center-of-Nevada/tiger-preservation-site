@@ -11,6 +11,9 @@ export default function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // normally set by the inline script in the layout before first paint;
+    // repeated here so reveals still work if that script was stripped
+    document.documentElement.classList.add("js");
     const els = document.querySelectorAll<HTMLElement>(".reveal:not(.in)");
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
