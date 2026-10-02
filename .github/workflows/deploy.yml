@@ -1,0 +1,30 @@
+name: Deploy to Vercel
+
+# The only workflow in this repo. The build runs on Vercel's infrastructure,
+# so the GitHub-hosted runner is only up for the seconds it takes to hand off.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning::VERCEL_TOKEN secret is not set — skipping deploy."
+            exit 0
+          fi
+          npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
