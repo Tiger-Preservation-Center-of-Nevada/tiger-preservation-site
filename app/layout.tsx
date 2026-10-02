@@ -24,8 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     "The Tiger Preservation Center of Nevada — a 501(c)(3) nonprofit, non-breeding rescue center giving lifetime homes to abused and neglected exotic animals: tigers, lions, big cats, and timber wolves.",
-  // Keep out of search results until the official domain points at this deployment.
-  robots: { index: false, follow: false },
+  metadataBase: new URL("https://www.tigerpreservationcenter.org"),
   openGraph: {
     type: "website",
     title: "The Tiger Preservation Center of Nevada",
@@ -51,7 +50,7 @@ const jsonLd = {
     "A 501(c)(3) nonprofit, non-breeding rescue center providing lifetime homes to abused and neglected exotic animals — tigers, lions, big cats, and timber wolves.",
   nonprofitStatus: "https://schema.org/Nonprofit501c3",
   taxID: "83-0883398",
-  url: "https://tigerpreservationcenter.org",
+  url: "https://www.tigerpreservationcenter.org",
   telephone: "+1-541-251-2287",
   email: "animalrescue4life@gmail.com",
   address: {
