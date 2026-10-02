@@ -13,44 +13,8 @@ export default function NewsPage() {
         <h1>From the center</h1>
 
         <h2>Upcoming events</h2>
-        <div className="event-list">
-          <div className="event-card reveal">
-            <div className="event-date" aria-hidden="true">
-              <div className="month">Oct</div>
-              <div className="day">10</div>
-            </div>
-            <div className="event-body">
-              <h3>
-                Fall fundraiser drive{" "}
-                <span className="sr-only">— October 10</span>
-              </h3>
-              <p>Help us stock up on food and supplies before winter.</p>
-            </div>
-            <Link href="/contact" className="details">
-              Details &rarr;
-            </Link>
-          </div>
-          <div className="event-card reveal">
-            <div className="event-date" aria-hidden="true">
-              <div className="month">Nov</div>
-              <div className="day">28</div>
-            </div>
-            <div className="event-body">
-              <h3>
-                Giving Tuesday <span className="sr-only">— November 28</span>
-              </h3>
-              <p>
-                A day of giving &mdash; every donation doubled by a matching
-                sponsor.
-              </p>
-            </div>
-            <Link href="/donate" className="details">
-              Details &rarr;
-            </Link>
-          </div>
-        </div>
-        <p className="fine-note event-note">
-          Sample events &mdash; replace with the center&rsquo;s real calendar.
+        <p>
+          No upcoming events are scheduled right now &mdash; check back soon.
         </p>
 
         <div className="news-gap" />
