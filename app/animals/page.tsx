@@ -44,8 +44,8 @@ export default function AnimalsPage() {
         </div>
         <div className="sponsor-band reveal">
           <p>
-            Sponsor a resident&rsquo;s food and care &mdash; every gift goes
-            directly to the animals.
+            Your support helps provide food and veterinary care for our
+            residents.
           </p>
           <Link href="/donate" className="btn btn-gold">
             Donate
