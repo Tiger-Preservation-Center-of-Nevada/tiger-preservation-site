@@ -298,7 +298,7 @@ p { margin: 0; }
 .callout h2 { margin: 0 0 10px; font-size: 24px; }
 .callout p { font-size: 15.5px; line-height: 1.65; color: var(--note-ink); }
 .callout a { font-weight: 700; }
-.callout a, .donate-fine a { overflow-wrap: anywhere; }
+.callout a { overflow-wrap: anywhere; }
 
 /* ---------- animals ---------- */
 /* auto-fill (not auto-fit) so a lone card keeps card size instead of stretching full-width */
@@ -352,54 +352,143 @@ p { margin: 0; }
 .news-gap { height: 64px; }
 
 /* ---------- donate ---------- */
-.donate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 56px; align-items: start; }
-.donate-copy h1 { margin: 0 0 18px; font-size: clamp(34px, 4.5vw, 52px); line-height: 1.08; text-wrap: pretty; }
-.donate-copy .lede { margin: 0 0 24px; font-size: 17.5px; line-height: 1.65; color: var(--ink-soft); }
-.impact { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-.impact-row { display: flex; gap: 14px; align-items: baseline; }
-.impact-row .amt { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--rust); min-width: 70px; }
-.impact-row p { font-size: 15.5px; line-height: 1.55; color: var(--ink-mute); }
-.donate-fine { font-size: 14px; line-height: 1.6; color: var(--ink-faint); }
-.donate-fine a { font-weight: 700; }
+/* mobile order: intro, form, details; from 960px the form takes the right column */
+.donate-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "intro" "form" "details"; row-gap: 40px; align-items: start;
+}
+.donate-intro { grid-area: intro; }
+.donate-form { grid-area: form; }
+.donate-details { grid-area: details; }
+@media (min-width: 960px) {
+  .donate-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 520px);
+    grid-template-areas: "intro form" "details form"; grid-template-rows: auto 1fr;
+    column-gap: clamp(40px, 5vw, 72px); row-gap: 0;
+  }
+  .donate-details { padding-top: 8px; }
+}
+.donate-intro h1 { margin: 0 0 18px; font-size: clamp(34px, 4.5vw, 52px); line-height: 1.08; text-wrap: pretty; }
+.donate-intro .lede { margin: 0; font-size: 17.5px; line-height: 1.65; max-width: 48ch; color: var(--ink-soft); }
+@media (min-width: 960px) { .donate-intro .lede { margin-bottom: 36px; } }
 
-.donate-widget {
-  background: var(--card); border: 1px solid var(--line-card); border-radius: 20px; padding: 30px;
-  box-shadow: 0 10px 32px oklch(0.3 0.03 45 / 0.09);
+.donate-details h2 {
+  margin: 0 0 6px; font-family: var(--sans); font-size: 13px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim);
 }
-.donate-widget h2 { margin: 0 0 18px; font-size: 24px; }
-.freq-toggle {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
-  background: oklch(0.92 0.02 75); border-radius: 999px; padding: 5px; margin-bottom: 20px;
+.impact { list-style: none; margin: 0 0 24px; padding: 0; max-width: 460px; }
+.impact li {
+  display: flex; gap: 18px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
 }
-.freq-toggle button {
-  border: none; border-radius: 999px; padding: 10px 0; font-size: 15px; font-weight: 800;
-  background: transparent; color: var(--ink-soft);
+.impact .amt {
+  flex: none; min-width: 72px; font-family: var(--serif); font-size: 28px;
+  font-weight: 600; line-height: 1; color: var(--rust);
 }
-.freq-toggle button[aria-pressed="true"] { background: var(--rust); color: var(--cream-ink); }
-.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-.amount-grid button {
-  border: 1.5px solid var(--line-input); background: var(--paper); color: var(--ink);
-  border-radius: 12px; padding: 13px 0; font-size: 16px; font-weight: 800;
+.impact li > span:last-child { font-size: 16px; line-height: 1.5; color: var(--ink-mute); }
+
+.donate-trust { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.donate-trust li {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px; border-radius: 999px; background: var(--tint);
+  font-size: 13px; font-weight: 700; color: var(--note-ink);
 }
-.amount-grid button[aria-pressed="true"] { border: 2px solid var(--rust); background: var(--tint); padding: 12px 0; }
-.custom-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-.custom-row .sign { font-weight: 800; font-size: 18px; }
-.custom-row input {
-  flex: 1; min-width: 0; border: 1.5px solid var(--line-input); border-radius: 12px;
-  padding: 12px 14px; font-size: 16px; background: var(--paper); outline: none;
+.donate-trust li::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--rust); flex: none;
 }
-.custom-row input:focus-visible { border-color: var(--rust); }
-.donate-cta {
-  width: 100%; background: var(--rust); color: var(--cream-ink); border: none;
-  border-radius: 999px; padding: 16px; font-size: 17px; font-weight: 800;
+
+/* form panel: a warm tray around Qgiv's own white card */
+.give-panel {
+  /* 630px Qgiv form + padding + border: the tray never outgrows the form */
+  max-width: 664px;
+  background: var(--band); border: 1px solid var(--line); border-radius: 24px;
+  padding: 18px 16px 16px; box-shadow: 0 18px 44px oklch(0.3 0.03 45 / 0.1);
 }
-.donate-cta:hover { background: var(--rust-deep); }
-.donate-cta[disabled] { opacity: 0.55; cursor: not-allowed; }
-.donate-cta[disabled]:hover { background: var(--rust); }
-.widget-note { margin: 14px 0 0; font-size: 13px; text-align: center; color: var(--ink-dim); }
-.widget-thanks { text-align: center; padding: 28px 8px; }
-.widget-thanks h2 { margin: 0 0 10px; font-size: 28px; }
-.widget-thanks p { margin: 0 0 22px; font-size: 16px; line-height: 1.6; color: var(--ink-mute); }
+.give-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 2px 8px 14px;
+}
+.give-head h2 { font-size: 24px; }
+.give-secure {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--ink-faint);
+}
+.give-secure svg { flex: none; color: var(--rust); }
+
+.give-frame { display: grid; grid-template-columns: minmax(0, 1fr); }
+/* the overlay stacks on the embed in one grid cell, so the frame grows to the taller of the two */
+.give-embed, .give-overlay { grid-area: 1 / 1; }
+/* Qgiv opens the iframe 1000px tall, then shrinks it once the form reports
+   its height: clip it while loading so the page doesn't jump */
+:where(html.js) .give-frame:not([data-status="ready"]) { min-height: 560px; }
+.give-frame:not([data-status="ready"]) .give-embed { max-height: 560px; overflow: hidden; }
+/* the cross-origin iframe can paint through the overlay's edges, so keep it
+   transparent until ready (opacity, not visibility: hidden iframes get
+   throttled and would delay Qgiv's sizing message) */
+.give-embed { transition: opacity .35s var(--ease); }
+.give-frame:not([data-status="ready"]) .give-embed { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .give-embed { transition: none; } }
+/* Qgiv's step changes scroll the form into view: clear the sticky header */
+.give-embed iframe { scroll-margin-top: 96px; }
+
+.give-overlay { display: flex; }
+:where(html:not(.js)) .give-overlay { display: none; }
+
+.give-skeleton {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 18px;
+  background: #fff; border: 1px solid var(--line-card); border-radius: 15px;
+  padding: 30px clamp(16px, 5%, 28px);
+}
+.give-skeleton > * { width: 100%; }
+.sk-steps { display: flex; justify-content: center; gap: 22px; }
+.sk-steps span { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line-card); }
+.sk-steps span:first-child { border-color: var(--rust); background: var(--rust); }
+.sk-bar, .sk-amounts > div {
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--band) 0%, var(--card) 50%, var(--band) 100%) 0 0 / 200% 100%;
+  animation: sk-shimmer 1.4s linear infinite;
+}
+.sk-title { width: 42%; height: 18px; }
+.sk-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 6px; border-bottom: 2px solid var(--band); }
+.sk-tabs .sk-bar { height: 14px; width: 50%; justify-self: center; }
+.sk-amounts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.sk-amounts > div { height: 50px; }
+@media (max-width: 520px) { .sk-amounts { grid-template-columns: repeat(2, 1fr); } }
+.sk-amounts .sk-other { grid-column: 1 / -1; }
+.sk-banner { height: 46px; }
+.sk-button { height: 48px; margin-top: auto; }
+@keyframes sk-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .sk-bar, .sk-amounts > div { animation: none; }
+}
+
+.give-fallback {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: safe center;
+  gap: 14px; text-align: center; background: var(--card); border: 1px solid var(--line-card);
+  border-radius: 15px; padding: 32px 24px;
+}
+.give-fallback h3 { font-size: 24px; }
+.give-fallback p { max-width: 36ch; font-size: 15.5px; line-height: 1.6; color: var(--ink-mute); }
+.give-fallback .btn { white-space: normal; }
+.give-fallback-call { font-size: 15px; }
+.give-fallback-call a { font-weight: 800; }
+
+.give-alt { margin: 12px 0 0; text-align: center; font-size: 13.5px; color: var(--ink-faint); }
+.give-alt a { font-weight: 700; }
+.give-frame[data-status="failed"] + .give-alt { display: none; }
+
+/* give directly */
+.donate-direct {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px;
+}
+.donate-direct-media { width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
+.donate-direct-media img { width: 100%; height: 100%; object-fit: cover; }
+.donate-direct h2 { margin: 0 0 12px; font-size: clamp(26px, 3.2vw, 36px); }
+.donate-direct-lede { margin: 0 0 24px; font-size: 16.5px; line-height: 1.65; max-width: 48ch; color: var(--ink-soft); }
+.donate-direct-cards { display: grid; gap: 14px; margin-bottom: 22px; }
+.donate-direct .contact-card { background: var(--card); border-color: var(--line-card); padding: 18px 22px; }
+.donate-fine { font-size: 14px; line-height: 1.6; color: var(--ink-faint); max-width: 60ch; }
 
 /* ---------- contact ---------- */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 48px; align-items: start; }
@@ -469,6 +558,7 @@ p { margin: 0; }
   .page-hero { padding-top: 40px; }
   .section-pad { padding-top: 40px; padding-bottom: 56px; }
   .page-hero .lede { margin-bottom: 32px; }
+  .donate-intro .lede { margin-bottom: 0; }
   #page-animals .lede { margin-bottom: 32px; }
   .news-section h1 { margin-bottom: 32px; }
 
@@ -480,7 +570,9 @@ p { margin: 0; }
   .dark-band .dark-grid { padding-top: 44px; padding-bottom: 44px; gap: 24px; }
 
   .about-intro { padding-bottom: 40px; }
-  .about-cols, .contact-grid, .donate-grid { gap: 28px; }
+  .about-cols, .contact-grid { gap: 28px; }
+  .donate-layout { row-gap: 28px; }
+  .donate-direct { padding-top: 44px; padding-bottom: 44px; gap: 28px; }
   .facts { padding-top: 40px; padding-bottom: 40px; }
   .founders { padding-top: 40px; }
   .founders-grid { gap: 20px; }
@@ -492,7 +584,9 @@ p { margin: 0; }
   .event-card { padding: 16px 18px; gap: 14px; }
   .news-gap { height: 44px; }
 
-  .donate-widget, .contact-form-card { padding: 24px 18px; }
+  .contact-form-card { padding: 24px 18px; }
+  .give-panel { padding: 14px 8px 12px; border-radius: 20px; }
+  .give-head { padding: 2px 8px 12px; }
   .footer-grid { gap: 22px; padding-top: 28px; padding-bottom: 24px; }
   .footer-col a { padding: 8px 0; }
 }
@@ -500,6 +594,6 @@ p { margin: 0; }
 @media (max-width: 380px) {
   .hero h1 { font-size: 34px; }
   .page-hero h1 { font-size: 30px; }
-  .donate-copy h1 { font-size: 30px; }
+  .donate-intro h1 { font-size: 30px; }
   .hero-actions .btn, .dark-actions .btn { width: 100%; }
 }
