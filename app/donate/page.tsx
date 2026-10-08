@@ -20,11 +20,10 @@ export default function DonatePage() {
         <div className="donate-layout">
           <div className="donate-intro">
             <p className="kicker">Donate</p>
-            <h1>Your gift keeps them fed, healthy, and safe.</h1>
+            <h1>Your support helps keep them fed, healthy, and safe.</h1>
             <p className="lede">
               A big cat eats up to 15 pounds of meat a day, and every resident
-              needs regular veterinary care and a secure enclosure. Every
-              dollar goes directly to the animals.
+              needs regular veterinary care and a secure enclosure.
             </p>
           </div>
 
@@ -33,19 +32,19 @@ export default function DonatePage() {
           </div>
 
           <div className="donate-details">
-            <h2>What your gift provides</h2>
+            <h2>What your gift could provide</h2>
             <ul className="impact" role="list">
               <li>
                 <span className="amt">$25</span>
-                <span>feeds a big cat for a day</span>
+                <span>Could feed a big cat for a day</span>
               </li>
               <li>
                 <span className="amt">$100</span>
-                <span>covers a veterinary checkup</span>
+                <span>Could partially cover a veterinary checkup</span>
               </li>
               <li>
                 <span className="amt">$500</span>
-                <span>helps maintain and improve enclosures</span>
+                <span>Could help us maintain and improve our property</span>
               </li>
             </ul>
             <ul className="donate-trust" role="list">
