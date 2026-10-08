@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ogFor } from "@/lib/og";
 
 const description =
@@ -44,10 +45,11 @@ export default function AboutPage() {
           </div>
           <div className="reveal">
             <div className="about-media">
-              <img
+              <Image
                 src="/assets/lion.jpg"
                 alt="Close-up of one of the center's rescued lions"
-                loading="lazy"
+                fill
+                sizes="(min-width: 1120px) 512px, (min-width: 696px) calc(50vw - 48px), calc(100vw - 48px)"
               />
             </div>
             <p className="media-caption">One of the center&rsquo;s rescued lions.</p>
@@ -85,20 +87,22 @@ export default function AboutPage() {
         <div className="founders-grid">
           <div className="reveal">
             <div className="founder-media">
-              <img
+              <Image
                 src="/assets/bonnie-serval.jpg"
                 alt="Bonnie holding a serval kitten to her cheek"
-                loading="lazy"
+                fill
+                sizes="(min-width: 1120px) 522px, (min-width: 596px) calc(50vw - 38px), calc(100vw - 48px)"
               />
             </div>
             <p className="founder-caption">Bonnie with a serval kitten.</p>
           </div>
           <div className="reveal">
             <div className="founder-media">
-              <img
+              <Image
                 src="/assets/bob-joey.jpg"
                 alt="Bob holding a young joey in a denim pouch"
-                loading="lazy"
+                fill
+                sizes="(min-width: 1120px) 522px, (min-width: 596px) calc(50vw - 38px), calc(100vw - 48px)"
               />
             </div>
             <p className="founder-caption">Bob with a young joey.</p>

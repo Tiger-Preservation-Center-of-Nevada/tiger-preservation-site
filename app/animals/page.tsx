@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ogFor } from "@/lib/og";
 
@@ -26,10 +27,11 @@ export default function AnimalsPage() {
         <div className="animal-grid">
           <div className="animal-card reveal">
             <div className="animal-media">
-              <img
+              <Image
                 src="/assets/shoka.jpg"
                 alt="Shoka, a white tiger, resting in his enclosure"
-                loading="lazy"
+                fill
+                sizes="(min-width: 1120px) 339px, (min-width: 884px) calc(33vw - 35px), (min-width: 596px) calc(50vw - 38px), calc(100vw - 48px)"
               />
             </div>
             <h2>Shoka</h2>
