@@ -244,7 +244,7 @@ p { margin: 0; }
 .hero h1 { margin: 0 0 20px; font-size: clamp(38px, 5vw, 60px); line-height: 1.05; text-wrap: pretty; }
 .hero .lede { margin: 0 0 28px; font-size: 18px; line-height: 1.6; max-width: 52ch; color: var(--ink-soft); }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-.hero-media { width: 100%; aspect-ratio: 4 / 5; max-height: 540px; border-radius: 20px; overflow: hidden; }
+.hero-media { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 540px; border-radius: 20px; overflow: hidden; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; }
 .media-caption { margin: 10px 4px 0; font-size: 13.5px; color: var(--ink-faint); }
 
@@ -267,7 +267,7 @@ p { margin: 0; }
 .about-cols .copy { font-size: 17px; line-height: 1.7; color: var(--ink-2); }
 .about-cols .copy p { margin: 0 0 18px; }
 .about-cols .copy p:last-child { margin-bottom: 0; }
-.about-media { width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
+.about-media { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
 .about-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .facts { padding-top: 56px; padding-bottom: 56px; }
@@ -281,7 +281,7 @@ p { margin: 0; }
 .founders h2 { margin: 0 0 16px; font-size: clamp(24px, 3vw, 34px); }
 .founders .lede { margin: 0 0 32px; font-size: 16.5px; line-height: 1.65; max-width: 62ch; color: var(--ink-soft); }
 .founders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; align-items: start; }
-.founder-media { width: 100%; aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; }
+.founder-media { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; }
 .founder-media img { width: 100%; height: 100%; object-fit: cover; }
 .founder-caption { margin: 12px 4px 0; font-size: 14px; color: var(--ink-faint); }
 .founders blockquote {
@@ -303,7 +303,7 @@ p { margin: 0; }
 /* ---------- animals ---------- */
 /* auto-fill (not auto-fit) so a lone card keeps card size instead of stretching full-width */
 .animal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
-.animal-media { width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; }
+.animal-media { position: relative; width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; }
 .animal-media img { width: 100%; height: 100%; object-fit: cover; }
 .animal-card h2 { margin: 16px 0 6px; font-size: 24px; }
 .animal-card p { font-size: 15.5px; line-height: 1.6; color: var(--ink-mute); }
@@ -482,7 +482,7 @@ p { margin: 0; }
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px;
 }
-.donate-direct-media { width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
+.donate-direct-media { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
 .donate-direct-media img { width: 100%; height: 100%; object-fit: cover; }
 .donate-direct h2 { margin: 0 0 12px; font-size: clamp(26px, 3.2vw, 36px); }
 .donate-direct-lede { margin: 0 0 24px; font-size: 16.5px; line-height: 1.65; max-width: 48ch; color: var(--ink-soft); }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -34,9 +35,11 @@ export default function Home() {
         </div>
         <div>
           <div className="hero-media">
-            <img
+            <Image
               src="/assets/shoka.jpg"
               alt="Shoka, a white tiger, resting in his enclosure at the center"
+              fill
+              sizes="(min-width: 1120px) 512px, (min-width: 696px) calc(50vw - 48px), calc(100vw - 48px)"
               loading="eager"
               fetchPriority="high"
             />

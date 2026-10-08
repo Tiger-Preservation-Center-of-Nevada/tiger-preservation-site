@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import QgivForm from "@/components/QgivForm";
 import { ogFor } from "@/lib/og";
 
@@ -60,12 +61,11 @@ export default function DonatePage() {
         <div className="wrap donate-direct">
           <div className="reveal">
             <div className="donate-direct-media">
-              <img
+              <Image
                 src="/assets/lion.jpg"
                 alt="Close-up of one of the center's rescued lions"
-                width={720}
-                height={540}
-                loading="lazy"
+                fill
+                sizes="(min-width: 1120px) 512px, (min-width: 696px) calc(50vw - 48px), calc(100vw - 48px)"
               />
             </div>
           </div>
