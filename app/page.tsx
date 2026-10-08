@@ -101,11 +101,10 @@ export default function Home() {
       <section className="dark-band">
         <div className="wrap dark-grid">
           <div>
-            <h2>Your gift keeps them fed, healthy, and safe.</h2>
+            <h2>Your support helps keep them fed, healthy, and safe.</h2>
             <p>
-              A big cat eats up to 15 pounds of meat a day. Every dollar goes
-              directly to the animals&rsquo; food, veterinary care, and
-              enclosures.
+              A big cat eats up to 15 pounds of meat a day, and every resident
+              needs regular veterinary care and a secure enclosure.
             </p>
           </div>
           <div className="dark-actions">

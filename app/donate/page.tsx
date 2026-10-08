@@ -4,7 +4,7 @@ import QgivForm from "@/components/QgivForm";
 import { ogFor } from "@/lib/og";
 
 const description =
-  "Your tax-deductible gift to the Tiger Preservation Center of Nevada funds food, veterinary care, and enclosures for rescued tigers, lions, and timber wolves.";
+  "Donate to the Tiger Preservation Center of Nevada, a 501(c)(3) nonprofit sanctuary caring for rescued tigers, lions, and timber wolves.";
 
 export const metadata: Metadata = {
   title: "Donate",
