@@ -1,19 +1,79 @@
 name: Deploy to Vercel
 
-# The only workflow in this repo. The build runs on Vercel's infrastructure,
-# so the GitHub-hosted runner is only up for the seconds it takes to hand off.
+# Pull requests: lint + build, then a Vercel preview deployment linked in a
+# PR comment. Pushes to main (merged PRs): deploy straight to production.
+# Builds run on Vercel's infrastructure, so the deploy jobs' runners are only
+# up for the seconds it takes to hand off.
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+# A new push to a pull request cancels that PR's older run (check + preview).
+# Runs on main get a group each; the deploy job serializes them itself.
 concurrency:
-  group: vercel-deploy
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  deploy:
+  check:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  preview:
+    # secrets aren't available to pull requests from forks
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning::VERCEL_TOKEN secret is not set — skipping preview."
+            exit 0
+          fi
+          # Without org/project ID secrets, resolve (or create) the project by name.
+          if [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            unset VERCEL_ORG_ID VERCEL_PROJECT_ID
+            npx vercel@latest link --yes --project tiger-preservation-site --token "$VERCEL_TOKEN"
+          fi
+          url=$(npx vercel@latest deploy --yes --token "$VERCEL_TOKEN")
+          echo "Preview: $url" >> "$GITHUB_STEP_SUMMARY"
+          body="Preview deployment for ${HEAD_SHA:0:7}: $url"
+          gh pr comment "$PR_NUMBER" --edit-last --body "$body" 2>/dev/null \
+            || gh pr comment "$PR_NUMBER" --body "$body"
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: vercel-deploy
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
 

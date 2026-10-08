@@ -24,14 +24,29 @@ npm run build
 
 ## Deployment
 
-Pushes to `main` trigger the **Deploy to Vercel** GitHub Actions workflow
-(`.github/workflows/deploy.yml`), which hands the build off to Vercel.
+The **Deploy to Vercel** GitHub Actions workflow
+(`.github/workflows/deploy.yml`) hands builds off to Vercel:
+
+- **Pull requests** run `npm run lint` and `npm run build`, then create a
+  Vercel preview deployment and link it in a PR comment.
+- **Pushes to `main`**, including merged pull requests, deploy straight to
+  production.
+
 It requires the `VERCEL_TOKEN` repository secret
 ([Vercel account settings → Tokens](https://vercel.com/account/tokens)).
 
 The optional `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` secrets pin the exact
 Vercel project; when absent, the workflow resolves (or creates) the project
 by its name, `tiger-preservation-site`.
+
+## Donations
+
+`/donate` embeds the Qgiv donation form (`components/QgivForm.tsx`). Qgiv
+only sends the form's resize messages to the site address saved in the
+embed's settings in Qgiv (`https://www.tigerpreservationcenter.org/donate`),
+so on localhost and preview deployments the form sits at a fixed 1000px
+height instead of fitting its content. Colors and amounts are set in Qgiv,
+not in this repo.
 
 ## Pages
 
